@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Actividad 03 | Seguridad Informática
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-main">
+
+        <div class="identity">
+
+            <div class="identity-name">
+
+                <h1>
+                    Melanie Alondra Alba Diez
+                </h1>
+
+                <span class="alias">
+                    @melaniealba
+                </span>
+
+            </div>
+
+
+            <div class="academic-info">
+
+                <strong>
+                    CNO IV — Seguridad Informática
+                </strong>
+
+                <span>
+                    Universidad Politécnica de San Luis Potosí
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="academic-period">
+
+            <span class="period-label">
+                Periodo
+            </span>
+
+            <strong>
+                Agosto - Diciembre 2026
+            </strong>
+
+            <span>
+                Séptimo semestre
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="../index.html#inicio">
+            Inicio
+        </a>
+
+        <a href="../index.html#evidencias">
+            Evidencias
+        </a>
+
+        <a href="../index.html#proyectos">
+            Proyectos
+        </a>
+
+        <a href="../index.html#certificaciones">
+            Certificaciones
+        </a>
+
+        <a href="../index.html#perfil">
+            Perfil
+        </a>
+
+        <a href="../index.html#tecnologias">
+            Tecnologías
+        </a>
+
+        <a href="../index.html#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     ENCABEZADO DE LA EVIDENCIA
+===================================================== -->
+
+<section class="section" style="padding-top: 30px;">
+
+    <div class="section-title">
+
+        <span>
+            01
+        </span>
+
+        <h2>
+            Actividad 03
+        </h2>
+
+    </div>
+
+
+    <span class="card-tag">
+        ACTIVIDAD ACADÉMICA
+    </span>
+
+
+
+    <h1 style="margin-top: 15px;">
+        No presiones Esc... todavía
+    </h1>
+
+
+    <p
+        class="section-intro"
+        style="margin-top: 20px;"
+    >
+
+        Registro de eventos del teclado y asociación temporal mediante Python en un entorno controlado.
+
+    </p>
+
+
+
+    <!-- =================================================
+         INFORMACIÓN
+    ================================================== -->
+
+    <div class="technical-info">
+
+
+        <div>
+
+            <span>
+                FECHA
+            </span>
+
+
+            <strong>
+                24 / 08 / 2026
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TIPO
+            </span>
+
+
+            <strong>
+                Actividad
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TECNOLOGÍAS
+            </span>
+
+            <strong>
+                Python · VS Code · pynput
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OBJETIVO
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            02
+        </span>
+
+        <h2>
+            Objetivo
+        </h2>
+
+    </div>
+
+
+    <!-- EDITAR -->
+
+    <p class="section-intro">
+
+        Implementar y documentar, en un entorno controlado, un programa 
+        basado en eventos de teclado y callbacks que permita registrar 
+        las pulsaciones realizadas, asociarlas temporalmente mediante 
+        una marca de fecha y hora y conservar los registros en un archivo 
+        local, con el fin de comprender el funcionamiento técnico de una 
+        técnica de captura de entrada y reconocer sus implicaciones 
+        dentro de la ciberseguridad.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESARROLLO
+===================================================== -->
+
+<section class="section alternate-section">
+
+    <div class="section-title">
+
+        <span>
+            03
+        </span>
+
+        <h2>
+            Desarrollo
+        </h2>
+
+    </div>
+
+
+    <!-- EDITAR -->
+
+    <p class="section-intro">
+
+        La actividad se desarrolló utilizando Python en Visual Studio Code. Primero se configuró el entorno de ejecución de Python y se instaló la biblioteca pynput, utilizada para detectar eventos del teclado.
+        <br><br>
+        A partir del código base proporcionado en clase, se implementó una función para registrar las pulsaciones detectadas. Cada evento se asocia con la fecha y hora en que ocurrió y se almacena en un archivo de texto denominado registro.txt.
+        <br><br>
+        Para conservar los registros entre ejecuciones se utilizó el modo de apertura append, de manera que los nuevos eventos se agregan al final del archivo sin eliminar la información registrada anteriormente.
+        <br><br>
+        El programa permanece escuchando las pulsaciones mediante un listener y utiliza la tecla Esc como mecanismo para finalizar la ejecución.
+
+    </p>
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Código
+        </h3>
+
+    </div>
+
+    <img
+        src="actividad03/imagenes/librerias.png"
+        alt="Captura de la actividad"
+        class="evidence-image"
+    >
+
+    <p class="section-intro">
+        <b>pynput.keyboard</b> -> Se utiliza para interactuar con los eventos del teclado. De este módulo se importan Key y Listener, utilizados respectivamente para identificar teclas especiales y escuchar las pulsaciones realizadas.
+        <br><br>
+        <b>Key</b> -> Permite identificar teclas especiales del teclado, como Esc, Enter o Space. En esta implementación se utiliza para detectar la tecla Esc, que finaliza la ejecución del programa.
+        <br><br>
+        <b>Listener</b> -> Es el componente encargado de permanecer atento a los eventos del teclado y ejecutar la función on_press cada vez que se detecta una pulsación.
+        <br><br>
+        <b>datetime</b> -> Permite obtener la fecha y hora actuales del sistema. Se utiliza para asociar temporalmente cada pulsación registrada.
+    </p>
+
+    <img
+        src="actividad03/imagenes/registraevento.png"
+        alt="Captura de la actividad"
+        class="evidence-image"
+    >
+
+    <p class="section-intro">
+        Esta función se encarga de almacenar cada pulsación detectada en el archivo registro.txt.
+        <br>
+        Primero obtiene la fecha y hora actual mediante <b>datetime.now()</b> y las convierte al formato AAAA-MM-DD HH:MM:SS.
+        <br>
+        Posteriormente abre registro.txt en modo <b>append ("a")</b>, lo que permite agregar nuevos registros al final del archivo sin eliminar los eventos almacenados anteriormente.
+        <br>
+        Finalmente escribe la fecha y hora, el tipo de evento (PRESS) y la tecla detectada.
+        <br><br>
+        <b>-> Si registro.txt no existe, Python lo crea automáticamente. Si ya existe, los nuevos eventos se agregan al final del archivo.</b>
+    </p>
+
+    <img
+        src="actividad03/imagenes/onpress.png"
+        alt="Captura de la actividad"
+        class="evidence-image"
+    >
+
+    <p class="section-intro">
+        Esta función se ejecuta cada vez que el listener detecta una tecla presionada.
+        <br>
+        Primero verifica si la tecla corresponde a Esc. En caso afirmativo, devuelve False, lo que detiene el listener y finaliza la ejecución.
+        <br>
+        Para las demás teclas, intenta obtener su carácter mediante key.char. Si se trata de una tecla especial que no posee un carácter, se utiliza <b>str(key)</b> para representarla.
+        <br>
+        Finalmente, muestra la tecla detectada en la terminal y llama a <b>registrar_evento()</b> para almacenarla en el archivo de registro.
+        <br><br>
+        <b>-> Las teclas alfanuméricas poseen un atributo char, por ejemplo h o 5. Algunas teclas especiales, como Enter o Space, no tienen este atributo. Por ello, se utiliza una excepción AttributeError para detectar estos casos y representar la tecla mediante str(key).</b>
+    </p>
+
+    <img
+        src="actividad03/imagenes/listener.png"
+        alt="Captura de la actividad"
+        class="evidence-image"
+    >
+
+    <p class="section-intro">
+        Se crea un listener que permanece atento a las pulsaciones del teclado y utiliza on_press como función de respuesta ante cada evento.
+        <br>
+        <b>listener.join()</b> mantiene el listener activo hasta que on_press devuelve False al detectar la tecla Esc.
+    </p>
+
+    <div class="activity-links">
+
+    <a
+        href="actividad03/documentos/informe.pdf"
+        target="_blank"
+        class="activity-link"
+    >
+        Ver informe
+    </a>
+
+    <a
+        href="actividad03/codigo/actividad03.py"
+        download
+        class="activity-link"
+    >
+        Descargar código fuente
+    </a>
+
+    <a
+        href="actividad03/documentos/registro.txt"
+        download
+        class="activity-link"
+    >
+        Descargar registro
+    </a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULTADOS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            04
+        </span>
+
+        <h2>
+            Resultados
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Se obtuvo un programa funcional capaz de detectar pulsaciones del teclado y registrarlas en un archivo local. Cada evento almacenado incluye la fecha y hora de ocurrencia, así como la tecla detectada, permitiendo establecer el orden temporal de los eventos.
+        <br><br>
+        Durante las pruebas se comprobó que el archivo registro.txt se genera automáticamente cuando se realiza el primer registro y que los eventos posteriores se agregan al contenido existente sin sobrescribir los registros anteriores.
+        <br><br>
+        También se verificó que la ejecución puede finalizar mediante la tecla Esc, conservando los datos registrados en el archivo.
+
+    </p>
+
+    <img
+        src="actividad03/imagenes/archivotxt.png"
+        alt="Captura de la actividad"
+        class="evidence-image"
+        style="max-width: 450px; margin-bottom: 0px;"
+    >
+
+</section>
+
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+===================================================== -->
+
+<section class="section" style="margin-top: 0px;">
+
+    <div class="section-title">
+
+        <span>
+            05
+        </span>
+
+        <h2>
+            Conclusión
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        La actividad permitió comprender de manera práctica el funcionamiento de los eventos de teclado y su implementación mediante Python y la biblioteca pynput. A partir del código base proporcionado, fue posible desarrollar un mecanismo capaz de detectar pulsaciones, asociarlas con una marca temporal y almacenarlas de manera persistente en un archivo local.
+        <br><br>
+        Las pruebas realizadas permitieron comprobar que los eventos se registran correctamente, que cada uno conserva la fecha y hora de su ocurrencia y que los registros permanecen disponibles después de finalizar la ejecución. Esto permitió relacionar conceptos como event hooks, callbacks, registro de eventos y persistencia con una aplicación práctica dentro del área de seguridad informática.
+        <br><br>
+        Finalmente, la actividad permitió reconocer las implicaciones de las técnicas de captura de entrada y la importancia de estudiarlas dentro de entornos controlados y con fines académicos.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOLVER
+===================================================== -->
+
+<section class="section" style="margin-top: 0px; padding-top: 0px;">
+
+    <a
+        href="../index.html#evidencias"
+        class="btn btn-primary"
+    >
+        ← Volver a evidencias
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        Portafolio de evidencias · Seguridad Informática
+    </p>
+
+    <p class="copyright">
+        © 2026 Melanie Alondra Alba Diez. Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
