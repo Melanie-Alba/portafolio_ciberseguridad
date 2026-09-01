@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Actividad 04 | Seguridad Informática
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-main">
+
+        <div class="identity">
+
+            <div class="identity-name">
+
+                <h1>
+                    Melanie Alondra Alba Diez
+                </h1>
+
+                <span class="alias">
+                    @melaniealba
+                </span>
+
+            </div>
+
+
+            <div class="academic-info">
+
+                <strong>
+                    CNO IV — Seguridad Informática
+                </strong>
+
+                <span>
+                    Universidad Politécnica de San Luis Potosí
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="academic-period">
+
+            <span class="period-label">
+                Periodo
+            </span>
+
+            <strong>
+                Agosto - Diciembre 2026
+            </strong>
+
+            <span>
+                Séptimo semestre
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="../index.html#inicio">
+            Inicio
+        </a>
+
+        <a href="../index.html#evidencias">
+            Evidencias
+        </a>
+
+        <a href="../index.html#proyectos">
+            Proyectos
+        </a>
+
+        <a href="../index.html#certificaciones">
+            Certificaciones
+        </a>
+
+        <a href="../index.html#perfil">
+            Perfil
+        </a>
+
+        <a href="../index.html#tecnologias">
+            Tecnologías
+        </a>
+
+        <a href="../index.html#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     ENCABEZADO DE LA EVIDENCIA
+===================================================== -->
+
+<section class="section" style="padding-top: 30px;">
+
+    <div class="section-title">
+
+        <span>
+            01
+        </span>
+
+        <h2>
+            Actividad 04
+        </h2>
+
+    </div>
+
+
+    <span class="card-tag">
+        ACTIVIDAD ACADÉMICA
+    </span>
+
+
+    <h1 style="margin-top: 15px;">
+        Una página demasiado convincente
+    </h1>
+
+
+    <p
+        class="section-intro"
+        style="margin-top: 20px;"
+    >
+        Simulación controlada de una técnica de phishing
+        mediante Social-Engineer Toolkit (SET) y una página
+        web institucional ficticia.
+    </p>
+
+
+    <div class="technical-info">
+
+        <div>
+
+            <span>
+                FECHA
+            </span>
+
+            <strong>
+                31 / 08 / 2026
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TIPO
+            </span>
+
+            <strong>
+                Actividad
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TECNOLOGÍAS
+            </span>
+
+            <strong>
+                Kali Linux · VirtualBox · SET · HTML · CSS
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OBJETIVO
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            02
+        </span>
+
+        <h2>
+            Objetivo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Implementar y analizar, dentro de un entorno de laboratorio
+        controlado, una simulación de ingeniería social mediante
+        Social-Engineer Toolkit (SET) y su módulo Credential Harvester,
+        utilizando una página web institucional ficticia para comprender
+        cómo la información introducida en un formulario puede ser
+        transmitida y registrada por un servidor.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESARROLLO
+===================================================== -->
+
+<section class="section alternate-section">
+
+    <div class="section-title">
+
+        <span>
+            03
+        </span>
+
+        <h2>
+            Desarrollo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        Para la simulación se diseñó un portal de autenticación
+        perteneciente a <b>NovaTech Instituto Superior</b>, una
+        institución completamente ficticia creada para la actividad.
+
+        <br><br>
+
+        La página presenta un aviso de sesión expirada y solicita
+        un usuario y contraseña institucionales, representando un
+        escenario en el que la ingeniería social busca proporcionar
+        una razón aparentemente legítima para que el usuario vuelva
+        a introducir sus credenciales.
+
+    </p>
+
+
+    <!-- CAMBIA LA RUTA SEGÚN EL NOMBRE DE TU CAPTURA -->
+
+    <img
+        src="actividad04/imagenes/paginafic.png"
+        alt="Portal institucional ficticio NovaTech"
+        class="evidence-image"
+    >
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Configuración del laboratorio
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        El portal fue desarrollado mediante HTML y CSS en el equipo
+        anfitrión. Posteriormente, la carpeta del proyecto se compartió
+        con la máquina virtual Kali Linux mediante la función de
+        carpetas compartidas de VirtualBox.
+
+        <br><br>
+
+        Desde Kali se verificó el acceso al archivo
+        <b>index.html</b> y se copió al directorio de trabajo
+        utilizado durante la práctica.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/carpcomp1.png"
+        alt="Configuración de carpeta compartida en VirtualBox"
+        class="evidence-image"
+        style="width: 30%; display: block; margin: 8px 0;"
+    >
+
+    <img
+        src="actividad04/imagenes/carpcomp2.png"
+        alt="Verificación del archivo index.html desde Kali Linux"
+        class="evidence-image"
+        style="width: 35%; display: block; margin: 8px 0;"
+    >
+
+
+    <div class="section-title" style="margin-bottom: 15px; margin-top: 35px;">
+
+        <h3>
+            Configuración de SET
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        Social-Engineer Toolkit se ejecutó desde Kali Linux y se
+        seleccionó la ruta:
+
+        <br><br>
+
+        <b>
+            Social-Engineering Attacks →
+            Website Attack Vectors →
+            Credential Harvester Attack Method →
+            Custom Import
+        </b>
+
+        <br><br>
+
+        La opción <b>Custom Import</b> permitió utilizar el portal
+        desarrollado específicamente para la práctica, evitando
+        emplear o clonar páginas pertenecientes a organizaciones reales.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/menuset1.png"
+        alt="Configuración de Credential Harvester en SET"
+        class="evidence-image"
+        style="width: 28%;"
+    >
+    <img
+        src="actividad04/imagenes/menuset2.png"
+        alt="Configuración de Credential Harvester en SET"
+        class="evidence-image"
+        style="width: 30%;"
+    >
+    <br>
+    <img
+        src="actividad04/imagenes/menuset3.png"
+        alt="Configuración de Credential Harvester en SET"
+        class="evidence-image"
+        style="width: 29%;"
+    >
+    <img
+        src="actividad04/imagenes/menuset4.png"
+        alt="Configuración de Credential Harvester en SET"
+        class="evidence-image"
+        style="width: 14%;"
+    >
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        El servidor fue configurado utilizando la dirección
+        <b>127.0.0.1</b>, correspondiente a localhost, y el portal
+        se mantuvo exclusivamente dentro de la máquina virtual.
+
+        <br><br>
+
+        De esta manera, la simulación permaneció aislada y se realizó
+        únicamente con datos ficticios dentro de un entorno controlado.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/config.png"
+        alt="Servidor local de Credential Harvester"
+        class="evidence-image"
+    >
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Flujo de captura de información
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        <b>Credential Harvester</b> es el componente encargado de
+        recibir y registrar la información enviada mediante un
+        formulario web.
+
+        <br><br>
+
+        Durante la prueba, el usuario introdujo credenciales
+        completamente ficticias en el portal. Al seleccionar
+        <b>Iniciar sesión</b>, el formulario transmitió los parámetros
+        <b>username</b> y <b>password</b> mediante una petición HTTP
+        POST hacia el servidor local ejecutado por SET.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/prueba.png"
+        alt="Ingreso de credenciales ficticias en el portal"
+        class="evidence-image"
+    >
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        Credential Harvester recibió la petición e identificó los
+        parámetros correspondientes al usuario y contraseña,
+        mostrándolos posteriormente en la terminal.
+
+        <br><br>
+
+        Este proceso representa una <b>captura de credenciales</b>,
+        no una vulneración de contraseña. SET no descifró ni descubrió
+        una clave desconocida; los valores fueron recibidos porque
+        habían sido introducidos y enviados directamente mediante
+        el formulario.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/capturaset.png"
+        alt="Registro de parámetros username y password en SET"
+        class="evidence-image"
+    >
+
+
+    <p class="section-intro" style="margin-bottom: 0px;">
+
+        El flujo observado durante la práctica puede resumirse como:
+
+        <br><br>
+
+        <b>
+            Usuario → Formulario web → Petición HTTP POST →
+            Servidor local → Credential Harvester →
+            Registro de parámetros
+        </b>
+
+        <br><br>
+
+        Finalmente, SET generó un reporte en formato XML en el que
+        quedaron registrados los datos ficticios utilizados durante
+        las diferentes pruebas.
+
+    </p>
+
+
+    <img
+        src="actividad04/imagenes/xml.png"
+        alt="Reporte XML generado por SET"
+        class="evidence-image"
+    >
+
+
+    <!-- =============================================
+         ARCHIVOS DE LA ACTIVIDAD
+    ============================================== -->
+
+    <div class="activity-links">
+
+        <a
+            href="actividad04/documentos/informe.pdf"
+            target="_blank"
+            class="activity-link"
+        >
+            Ver informe
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULTADOS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title" style="margin-bottom: 0px; padding-top: 15px;">
+
+        <span>
+            04
+        </span>
+
+        <h2>
+            Resultados
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Se logró configurar correctamente un escenario local de
+        simulación de phishing mediante SET y una página institucional
+        ficticia.
+
+        <br><br>
+
+        Durante las pruebas se comprobó que los datos introducidos
+        en el formulario eran enviados al servidor local mediante
+        una petición HTTP y que Credential Harvester podía identificar
+        y registrar los parámetros correspondientes al usuario y la
+        contraseña.
+
+        <br><br>
+
+        También se verificó la persistencia de los resultados mediante
+        el reporte XML generado por SET, donde quedaron almacenados
+        los diferentes datos ficticios utilizados durante las pruebas.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+===================================================== -->
+
+<section class="section" style="margin-top: 0px; padding-top: 0px;">
+
+    <div class="section-title">
+
+        <span>
+            05
+        </span>
+
+        <h2>
+            Conclusión
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        La actividad permitió comprender de manera práctica cómo
+        una técnica de phishing puede combinar ingeniería social
+        y herramientas técnicas para obtener información proporcionada
+        por un usuario.
+
+        <br><br>
+
+        La simulación permitió observar que la captura de credenciales
+        no requiere necesariamente vulnerar una contraseña, ya que
+        el usuario puede ser persuadido para proporcionar directamente
+        sus datos a un sistema fraudulento.
+
+        <br><br>
+
+        Por ello, la prevención del phishing requiere combinar la
+        concientización de los usuarios con diferentes controles
+        técnicos de seguridad.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOLVER
+===================================================== -->
+
+<section
+    class="section"
+    style="margin-top: 0px; padding-top: 0px;"
+>
+
+    <a
+        href="../index.html#evidencias"
+        class="btn btn-primary"
+    >
+        ← Volver a evidencias
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        Portafolio de evidencias · Seguridad Informática
+    </p>
+
+    <p class="copyright">
+        © 2026 Melanie Alondra Alba Diez. Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
