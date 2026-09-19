@@ -1768,3 +1768,478 @@ section {
     }
 
 }
+
+/* ==================================================
+   ROAD TO HALL OF FAME
+================================================== */
+
+.roadmap-section {
+    max-width: none;
+
+    padding-left:
+        max(30px, calc((100% - var(--max-width)) / 2));
+
+    padding-right:
+        max(30px, calc((100% - var(--max-width)) / 2));
+
+    background: var(--background-light);
+}
+
+
+/* ---------- Encabezado ---------- */
+
+.road-header {
+    max-width: var(--max-width);
+    margin: 0 auto 60px;
+}
+
+.road-header h3 {
+    margin: 8px 0;
+    font-size: 1.7rem;
+}
+
+.road-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* ==================================================
+   MAPA
+================================================== */
+
+.map {
+    position: relative;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding:
+        20px 0 80px;
+}
+
+
+/* Ruta central */
+
+.map::before {
+    content: "";
+
+    position: absolute;
+
+    top: 40px;
+    bottom: 100px;
+    left: 50%;
+
+    width: 3px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--accent) 0%,
+            var(--accent) 16%,
+            rgba(0, 245, 160, 0.25) 16%,
+            rgba(0, 245, 160, 0.25) 100%
+        );
+
+    border-radius: 20px;
+}
+
+
+/* ==================================================
+   PARADAS
+================================================== */
+
+.map-stop {
+    position: relative;
+
+    width: 50%;
+
+    min-height: 190px;
+
+    margin-bottom: 40px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+/* Izquierda */
+
+.stop-left {
+    padding-right: 75px;
+
+    justify-content: flex-end;
+}
+
+
+/* Derecha */
+
+.stop-right {
+    margin-left: 50%;
+
+    padding-left: 75px;
+
+    justify-content: flex-start;
+}
+
+
+/* ==================================================
+   NODOS DEL MAPA
+================================================== */
+
+.map-node {
+    position: absolute;
+
+    top: 50%;
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 3;
+
+    background: var(--background-light);
+
+    border:
+        2px solid #475569;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 8px var(--background-light);
+}
+
+
+.stop-left .map-node {
+    right: -25px;
+}
+
+
+.stop-right .map-node {
+    left: -25px;
+}
+
+
+.map-node span {
+    color: var(--text-muted);
+
+    font-family: monospace;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+}
+
+
+/* Conector horizontal */
+
+.map-stop::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 50px;
+    height: 2px;
+
+    background: #475569;
+}
+
+
+.stop-left::after {
+    right: 25px;
+}
+
+
+.stop-right::after {
+    left: 25px;
+}
+
+
+/* ==================================================
+   LABORATORIO COMPLETADO
+================================================== */
+
+.completed .map-node {
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 8px var(--background-light),
+        0 0 25px rgba(0, 245, 160, 0.25);
+}
+
+
+.completed .map-node span {
+    color: #06100d;
+}
+
+
+.completed::after {
+    background: var(--accent);
+}
+
+
+/* ==================================================
+   CUADRO DE LABORATORIO
+================================================== */
+
+.lab-box {
+    width: 100%;
+    max-width: 390px;
+
+    padding: 24px;
+
+    position: relative;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
+}
+
+
+.lab-box:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(0, 245, 160, 0.45);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+.completed .lab-box {
+    border-color:
+        rgba(0, 245, 160, 0.35);
+}
+
+
+/* ---------- Texto ---------- */
+
+.lab-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--accent);
+
+    font-family: monospace;
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.lab-box h3 {
+    margin-bottom: 8px;
+
+    font-size: 1rem;
+
+    line-height: 1.35;
+}
+
+
+.lab-box p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   ENLACES
+================================================== */
+
+.lab-links {
+    margin-top: 18px;
+
+    padding-top: 14px;
+
+    display: flex;
+
+    gap: 18px;
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+.lab-links a {
+    color: var(--text-muted);
+
+    font-family: monospace;
+
+    font-size: 0.7rem;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.lab-links a:hover {
+    color: var(--accent);
+}
+
+
+/* ==================================================
+   FINAL DEL MAPA
+================================================== */
+
+.hall-of-fame {
+    position: relative;
+
+    z-index: 3;
+
+    width: 230px;
+
+    margin:
+        40px auto 0;
+
+    padding:
+        25px 20px;
+
+    text-align: center;
+
+    background: var(--background-light);
+}
+
+
+.finish-node {
+    width: 58px;
+    height: 58px;
+
+    margin:
+        0 auto 15px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: var(--accent);
+
+    font-size: 1.4rem;
+
+    background: var(--card);
+
+    border:
+        2px solid var(--accent);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 25px rgba(0, 245, 160, 0.18);
+}
+
+
+.hall-of-fame span {
+    color: var(--text-muted);
+
+    font-family: monospace;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 2px;
+}
+
+
+.hall-of-fame h3 {
+    margin-top: 5px;
+
+    color: var(--accent);
+
+    font-size: 1.1rem;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 750px) {
+
+    .map::before {
+        left: 25px;
+    }
+
+
+    .map-stop {
+        width: 100%;
+
+        min-height: auto;
+
+        margin:
+            0 0 50px 0;
+
+        padding:
+            0 0 0 85px;
+
+        justify-content: flex-start;
+    }
+
+
+    .stop-right {
+        margin-left: 0;
+    }
+
+
+    .stop-left .map-node,
+    .stop-right .map-node {
+        left: 0;
+        right: auto;
+    }
+
+
+    .map-stop::after {
+        left: 25px;
+        right: auto;
+
+        width: 40px;
+    }
+
+
+    .lab-box {
+        max-width: 100%;
+    }
+
+
+    .hall-of-fame {
+        margin-left: 0;
+
+        transform:
+            translateX(-90px);
+    }
+
+}
