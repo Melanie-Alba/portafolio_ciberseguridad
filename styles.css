@@ -1840,9 +1840,9 @@ section {
         linear-gradient(
             to bottom,
             var(--accent) 0%,
-            var(--accent) 16%,
-            rgba(0, 245, 160, 0.25) 16%,
-            rgba(0, 245, 160, 0.25) 100%
+            var(--accent) 30%,
+            rgba(0, 245, 160, 0.25) 30%,
+            rgba(0, 245, 160, 0.25) 30%
         );
 
     border-radius: 20px;

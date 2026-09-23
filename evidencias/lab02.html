@@ -11,15 +11,13 @@
     >
 
     <title>
-        Laboratorio 01 | Seguridad Informática
+        Laboratorio 02 | Seguridad Informática
     </title>
-
 
     <link
         rel="stylesheet"
         href="../styles.css"
     >
-
 
 </head>
 
@@ -140,7 +138,7 @@
         </span>
 
         <h2>
-            Laboratorio 01
+            Laboratorio 02
         </h2>
 
     </div>
@@ -151,9 +149,8 @@
     </span>
 
 
-
     <h1 style="margin-top: 15px;">
-        File Path Traversal — Simple Case
+        File Path Traversal — Traversal Sequences Blocked With Absolute Path Bypass
     </h1>
 
 
@@ -162,10 +159,11 @@
         style="margin-top: 20px;"
     >
 
-        Explotación controlada de una vulnerabilidad File Path Traversal mediante Burp Suite para acceder a un archivo fuera del directorio autorizado.
+        Explotación controlada de una vulnerabilidad File Path Traversal
+        mediante el uso de una ruta absoluta para evadir el bloqueo de
+        secuencias de recorrido de directorios.
 
     </p>
-
 
 
     <!-- =================================================
@@ -181,9 +179,8 @@
                 FECHA
             </span>
 
-
             <strong>
-                18 / 09 / 2026
+                22 / 09 / 2026
             </strong>
 
         </div>
@@ -194,7 +191,6 @@
             <span>
                 TIPO
             </span>
-
 
             <strong>
                 Laboratorio
@@ -241,17 +237,17 @@
     </div>
 
 
-    <!-- EDITAR -->
-
     <p class="section-intro">
 
-        Identificar y explotar de manera controlada una vulnerabilidad 
-        de File Path Traversal presente en la carga de imágenes de una 
-        aplicación web. Mediante Burp Suite, se analizó y modificó una 
-        petición HTTP para manipular el parámetro filename utilizando 
-        secuencias de recorrido de directorios, con el objetivo de 
-        acceder al archivo /etc/passwd y comprobar la falta de validación 
-        adecuada de las rutas proporcionadas por el usuario.
+        Identificar y explotar de manera controlada una vulnerabilidad
+        de <b>File Path Traversal</b> presente en la carga de imágenes de
+        una aplicación web. Mediante Burp Suite, se analizó y modificó una
+        petición HTTP para manipular el parámetro <i>filename</i>.
+        <br><br>
+        Debido a que la aplicación bloquea las secuencias convencionales
+        de recorrido de directorios, se utilizó una <b>ruta absoluta</b>
+        para acceder directamente al archivo <i>/etc/passwd</i> y comprobar
+        que la validación implementada podía ser evadida.
 
     </p>
 
@@ -278,29 +274,31 @@
     </div>
 
 
-
     <p class="section-intro">
 
-        El laboratorio se realizó en <b>PortSwigger Web Security Academy</b> 
-        utilizando <b>Burp Suite Community Edition</b>. Desde el navegador 
-        integrado de Burp Suite se accedió a la instancia del 
-        laboratorio y se analizaron las peticiones HTTP generadas por la 
-        aplicación.
+        El laboratorio se realizó en <b>PortSwigger Web Security Academy</b>
+        utilizando <b>Burp Suite Community Edition</b>. Desde el navegador
+        integrado de Burp Suite se accedió a la instancia del laboratorio y
+        se analizaron las peticiones HTTP generadas por la aplicación.
+
         <br><br>
-        En <b>Proxy > HTTP history</b> se identificó que las imágenes de 
-        los productos eran solicitadas mediante peticiones <i>GET</i> al endpoint 
-        <i>/image</i>, utilizando el parámetro <i>filename</i> para especificar 
-        el archivo que debía recuperar el servidor. A partir de este 
-        comportamiento se seleccionó una de las peticiones para analizar 
-        y modificar su contenido.
+
+        En <b>Proxy > HTTP history</b> se identificó que las imágenes de
+        los productos eran solicitadas mediante peticiones <i>GET</i> al
+        endpoint <i>/image</i>, utilizando el parámetro <i>filename</i>
+        para especificar el archivo que debía recuperar el servidor.
+        A partir de este comportamiento se seleccionó una de las peticiones
+        para analizar y modificar su contenido.
 
     </p>
 
+
     <img
-        src="lab01/imagenes/httphistory.png"
-        alt="Captura de la actividad"
+        src="lab02/imagenes/httphistorylab02.jpg"
+        alt="Peticiones de imágenes identificadas en HTTP History"
         class="evidence-image"
     >
+
 
     <div class="section-title" style="margin-bottom: 15px;">
 
@@ -310,55 +308,86 @@
 
     </div>
 
+
     <p class="section-intro">
-        La petición seleccionada se envió al módulo <b>Repeater</b>, 
-        permitiendo modificar manualmente sus parámetros y reenviarla 
-        al servidor sin necesidad de generar nuevamente la solicitud 
-        desde el navegador.
+
+        La petición seleccionada se envió al módulo <b>Repeater</b>,
+        permitiendo modificar manualmente sus parámetros y reenviarla
+        al servidor para observar los cambios producidos en la respuesta.
+
         <br><br>
-        Dentro de Repeater se sustituyó el valor original de <i>filename</i> 
-        por el payload: <i>../../../etc/passwd</i>
+
+        En este laboratorio, la aplicación bloqueaba las secuencias
+        convencionales de recorrido de directorios como <i>../</i>.
+        Sin embargo, se identificó que todavía era posible proporcionar
+        directamente una <b>ruta absoluta</b> mediante el parámetro
+        <i>filename</i>.
+
         <br><br>
-        Cada secuencia <i>../</i> permite retroceder un nivel dentro de 
-        la estructura de directorios. Su repetición permite abandonar el 
-        directorio destinado a las imágenes e intentar acceder al archivo 
-        <i>/etc/passwd</i>.
+
+        Por esta razón, se sustituyó el nombre original de la imagen
+        por el siguiente payload:
+
+        <br><br>
+
+        <b><i>/etc/passwd</i></b>
+
     </p>
+
 
     <div class="section-title" style="margin-bottom: 15px;">
 
         <h3>
-            Explotación de File Path Traversal
+            Bypass mediante ruta absoluta
         </h3>
 
     </div>
 
+
     <p class="section-intro">
-        Después de enviar la petición modificada, el servidor respondió 
-        con <b>HTTP/2 200 OK</b> y devolvió en el cuerpo de la 
-        respuesta el contenido del archivo <i>/etc/passwd</i>.
+
+        A diferencia del laboratorio anterior, en esta ocasión no fue
+        necesario utilizar secuencias <i>../</i> para retroceder dentro
+        de la estructura de directorios.
+
         <br><br>
-        El resultado confirmó que la aplicación procesaba las secuencias 
-        de recorrido incluidas en <i>filename</i> sin restringir adecuadamente 
-        el acceso al directorio destinado a las imágenes. De esta manera 
-        fue posible acceder a un archivo del sistema ubicado fuera de la 
-        ruta autorizada.
+
+        El carácter <b>/</b> al inicio del payload indica que la ruta
+        comienza desde la raíz del sistema de archivos. De esta forma,
+        <i>/etc/passwd</i> especifica directamente la ubicación del archivo
+        que se desea recuperar.
+
+        <br><br>
+
+        Esto permitió evadir la protección implementada por la aplicación:
+        aunque las secuencias de traversal estaban bloqueadas, no existía
+        una validación adecuada que impidiera utilizar rutas absolutas.
+
     </p>
 
+
     <img
-        src="lab01/imagenes/payload.jpg"
-        alt="Captura de la actividad"
+        src="lab02/imagenes/payloadlab02.jpg"
+        alt="Payload con ruta absoluta y respuesta del servidor"
         class="evidence-image"
     >
 
+
     <p class="section-intro">
-        <b>../../../</b> permite ascender varios niveles desde el directorio utilizado por la aplicación.
+
+        Después de enviar la petición modificada, el servidor respondió
+        con <b>HTTP/2 200 OK</b> y devolvió en el cuerpo de la respuesta
+        información correspondiente al archivo <i>/etc/passwd</i>.
+
         <br><br>
-        <b>/etc/passwd</b> indica el archivo del sistema que se desea recuperar.
-        <br><br>
-        En conjunto, el payload aprovecha la ausencia de una validación 
-        adecuada para construir una ruta que termina apuntando a <i>/etc/passwd</i>.
+
+        La recuperación del archivo confirmó que el parámetro
+        <i>filename</i> aceptaba una ruta absoluta y que el filtro
+        implementado resultaba insuficiente para impedir el acceso
+        a archivos situados fuera del directorio autorizado.
+
     </p>
+
 
     <div class="section-title" style="margin-bottom: 15px;">
 
@@ -368,32 +397,35 @@
 
     </div>
 
+
     <p class="section-intro">
-        Finalmente, PortSwigger Web Security Academy reconoció la 
-        recuperación correcta del archivo solicitado y marcó el 
-        laboratorio como <b>Solved</b>, confirmando que el objetivo 
+
+        Finalmente, PortSwigger Web Security Academy reconoció la
+        recuperación correcta del archivo solicitado y marcó el
+        laboratorio como <b>Solved</b>, confirmando que el objetivo
         de la práctica había sido completado satisfactoriamente.
+
     </p>
 
+
     <img
-        src="lab01/imagenes/solved.jpg"
-        alt="Captura de la actividad"
+        src="lab02/imagenes/solvedlab02.jpg"
+        alt="Confirmación del laboratorio resuelto en PortSwigger"
         class="evidence-image"
     >
 
-    
 
     <div class="activity-links">
 
-    <a
-        href="lab01/documentos/informe.pdf"
-        target="_blank"
-        class="activity-link"
-    >
-        Ver informe completo
-    </a>
+        <a
+            href="lab02/documentos/informe.pdf"
+            target="_blank"
+            class="activity-link"
+        >
+            Ver informe completo
+        </a>
 
-</div>
+    </div>
 
 </section>
 
@@ -420,17 +452,24 @@
 
     <p class="section-intro">
 
-        Se explotó exitosamente una vulnerabilidad de File Path Traversal 
-        presente en el mecanismo de carga de imágenes de la aplicación. 
-        Mediante la manipulación del parámetro <i>filename</i> con el payload 
-        <i>../../../etc/passwd</i>, el servidor permitió abandonar el 
-        directorio previsto para las imágenes y acceder al archivo 
-        <i>/etc/passwd</i>.
+        Se explotó exitosamente una vulnerabilidad de
+        <b>File Path Traversal</b> presente en el mecanismo de carga de
+        imágenes de la aplicación.
+
         <br><br>
-        La respuesta <b>HTTP/2 200 OK</b> y la visualización del 
-        contenido del archivo confirmaron la vulnerabilidad. 
-        Finalmente, PortSwigger Web Security Academy validó 
-        la explotación y marcó el laboratorio como Solved.
+
+        Mediante la modificación del parámetro <i>filename</i> con el
+        payload <i>/etc/passwd</i>, se comprobó que el bloqueo de las
+        secuencias de recorrido de directorios no impedía el acceso
+        mediante una ruta absoluta.
+
+        <br><br>
+
+        El servidor respondió con <b>HTTP/2 200 OK</b> y mostró el
+        contenido del archivo solicitado, demostrando que la validación
+        implementada era insuficiente. Finalmente, PortSwigger Web
+        Security Academy validó la explotación y marcó el laboratorio
+        como <b>Solved</b>.
 
     </p>
 
@@ -459,22 +498,30 @@
 
     <p class="section-intro">
 
-        El laboratorio permitió comprender de manera práctica el 
-        funcionamiento de una vulnerabilidad <b>File Path Traversal</b> 
-        y la forma en que una entrada controlada por el usuario puede 
-        alterar la ruta utilizada por una aplicación para acceder a 
-        archivos del servidor.
+        El laboratorio permitió comprender que bloquear únicamente
+        secuencias conocidas como <i>../</i> no es suficiente para
+        prevenir una vulnerabilidad de <b>File Path Traversal</b>.
+
         <br><br>
-        Mediante Burp Suite fue posible analizar las peticiones HTTP, 
-        identificar el parámetro <i>filename</i>, modificar su valor 
-        y observar directamente la respuesta generada por el servidor. 
-        La recuperación de <i>/etc/passwd</i> demostró la importancia 
-        de validar y restringir las rutas proporcionadas por el 
-        usuario para evitar el acceso no autorizado a archivos.
+
+        Mediante Burp Suite fue posible identificar el parámetro
+        <i>filename</i>, modificar su valor y comprobar que la aplicación
+        aceptaba una ruta absoluta para acceder directamente a un archivo
+        fuera del directorio destinado a las imágenes.
+
         <br><br>
-        La actividad también permitió reforzar el uso de herramientas 
-        como HTTP History y Repeater para el análisis y modificación 
-        controlada de peticiones dentro de pruebas de seguridad web.
+
+        La recuperación de <i>/etc/passwd</i> demostró la importancia
+        de validar no solamente patrones específicos de recorrido, sino
+        también la ruta final que será procesada por el servidor,
+        asegurando que permanezca dentro de los directorios autorizados.
+
+        <br><br>
+
+        La actividad también permitió reforzar el uso de
+        <b>HTTP History</b> y <b>Repeater</b> para analizar, modificar
+        y comprobar el comportamiento de peticiones HTTP durante
+        pruebas controladas de seguridad web.
 
     </p>
 
