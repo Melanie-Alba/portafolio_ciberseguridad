@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Laboratorio 03 | Seguridad Informática
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-main">
+
+        <div class="identity">
+
+            <div class="identity-name">
+
+                <h1>
+                    Melanie Alondra Alba Diez
+                </h1>
+
+                <span class="alias">
+                    @blueflare
+                </span>
+
+            </div>
+
+
+            <div class="academic-info">
+
+                <strong>
+                    CNO IV — Seguridad Informática
+                </strong>
+
+                <span>
+                    Universidad Politécnica de San Luis Potosí
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="academic-period">
+
+            <span class="period-label">
+                Periodo
+            </span>
+
+            <strong>
+                Agosto - Diciembre 2026
+            </strong>
+
+            <span>
+                Séptimo semestre
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="../index.html#inicio">
+            Inicio
+        </a>
+
+        <a href="../index.html#evidencias">
+            Evidencias
+        </a>
+
+        <a href="../index.html#roadmap">
+            Road To Hall Of Fame
+        </a>
+
+        <a href="../index.html#proyectos">
+            Proyectos
+        </a>
+
+        <a href="../index.html#certificaciones">
+            Certificaciones
+        </a>
+
+        <a href="../index.html#perfil">
+            Perfil
+        </a>
+
+        <a href="../index.html#tecnologias">
+            Tecnologías
+        </a>
+
+        <a href="../index.html#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     ENCABEZADO DE LA EVIDENCIA
+===================================================== -->
+
+<section class="section" style="padding-top: 30px;">
+
+    <div class="section-title">
+
+        <span>
+            01
+        </span>
+
+        <h2>
+            Laboratorio 03
+        </h2>
+
+    </div>
+
+
+    <span class="card-tag">
+        ACTIVIDAD ACADÉMICA
+    </span>
+
+
+    <h1 style="margin-top: 15px;">
+        File Path Traversal — Traversal Sequences Stripped Non-Recursively
+    </h1>
+
+
+    <p
+        class="section-intro"
+        style="margin-top: 20px;"
+    >
+
+        Explotación controlada de una vulnerabilidad File Path Traversal
+        mediante secuencias de recorrido anidadas para evadir un mecanismo
+        de filtrado no recursivo.
+
+    </p>
+
+
+    <!-- =================================================
+         INFORMACIÓN
+    ================================================== -->
+
+    <div class="technical-info">
+
+
+        <div>
+
+            <span>
+                FECHA
+            </span>
+
+            <strong>
+                24 / 09 / 2026
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TIPO
+            </span>
+
+            <strong>
+                Laboratorio
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TECNOLOGÍAS
+            </span>
+
+            <strong>
+                Burp Suite · PortSwigger Web Security Academy · HTTP
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OBJETIVO
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            02
+        </span>
+
+        <h2>
+            Objetivo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Identificar y explotar de manera controlada una vulnerabilidad
+        de <b>File Path Traversal</b> presente en la carga de imágenes de
+        una aplicación web. Mediante Burp Suite, se analizó y modificó una
+        petición HTTP para manipular el parámetro <i>filename</i>.
+
+        <br><br>
+
+        Debido a que la aplicación elimina las secuencias convencionales
+        de recorrido <i>../</i> de forma no recursiva, se utilizaron
+        <b>secuencias de traversal anidadas</b> para evadir el filtro y
+        acceder al archivo <i>/etc/passwd</i>.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESARROLLO
+===================================================== -->
+
+<section class="section alternate-section">
+
+    <div class="section-title">
+
+        <span>
+            03
+        </span>
+
+        <h2>
+            Desarrollo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        El laboratorio se realizó en <b>PortSwigger Web Security Academy</b>
+        utilizando <b>Burp Suite Community Edition</b>. Desde el navegador
+        integrado de Burp Suite se accedió a la instancia del laboratorio y
+        se analizaron las peticiones HTTP generadas por la aplicación.
+
+        <br><br>
+
+        En <b>Proxy > HTTP history</b> se identificó que las imágenes de
+        los productos eran solicitadas mediante peticiones <i>GET</i> al
+        endpoint <i>/image</i>, utilizando el parámetro <i>filename</i>
+        para especificar el archivo que debía recuperar el servidor.
+        A partir de este comportamiento se seleccionó una de las peticiones
+        para analizar y modificar su contenido.
+
+    </p>
+
+
+    <img
+        src="lab03/imagenes/httphistorylab03.png"
+        alt="Peticiones de imágenes identificadas en HTTP History"
+        class="evidence-image"
+    >
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Análisis de la petición con Repeater
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        La petición seleccionada se envió al módulo <b>Repeater</b>,
+        permitiendo modificar manualmente sus parámetros y reenviarla
+        al servidor para analizar los cambios producidos en la respuesta.
+
+        <br><br>
+
+        En este laboratorio, la aplicación implementaba un mecanismo de
+        protección que eliminaba las secuencias convencionales de recorrido
+        de directorios <i>../</i>. Sin embargo, este procesamiento se
+        realizaba de forma <b>no recursiva</b>, por lo que el resultado
+        obtenido después de eliminar la secuencia no era analizado nuevamente.
+
+        <br><br>
+
+        Para aprovechar esta condición, se sustituyó el nombre original
+        de la imagen por el siguiente payload:
+
+        <br><br>
+
+        <b><i>....//....//....//etc/passwd</i></b>
+
+    </p>
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Bypass mediante secuencias anidadas
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        El bypass se realizó utilizando la secuencia anidada
+        <b><i>....//</i></b>. Esta construcción permite aprovechar que
+        la aplicación elimina las apariciones de <i>../</i> solamente
+        una vez.
+
+        <br><br>
+
+        Cuando el filtro elimina la secuencia detectada dentro de
+        <i>....//</i>, los caracteres restantes vuelven a formar una
+        secuencia válida <i>../</i>. Debido a que el mecanismo no procesa
+        nuevamente el resultado, esta nueva secuencia continúa siendo
+        interpretada durante la resolución de la ruta.
+
+        <br><br>
+
+        Al repetir esta construcción varias veces fue posible ascender
+        por la estructura de directorios hasta alcanzar el archivo
+        <i>/etc/passwd</i>.
+
+    </p>
+
+
+    <img
+        src="lab03/imagenes/payloadlab03.png"
+        alt="Payload con secuencias de traversal anidadas y respuesta del servidor"
+        class="evidence-image"
+    >
+
+
+    <p class="section-intro">
+
+        Después de enviar la petición modificada, el servidor respondió
+        con <b>HTTP/2 200 OK</b> y devolvió en el cuerpo de la respuesta
+        información correspondiente al archivo <i>/etc/passwd</i>.
+
+        <br><br>
+
+        La recuperación del archivo confirmó que las secuencias anidadas
+        consiguieron evadir el mecanismo de filtrado implementado por la
+        aplicación, permitiendo acceder a un recurso situado fuera del
+        directorio autorizado.
+
+    </p>
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Confirmación del laboratorio
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Finalmente, PortSwigger Web Security Academy reconoció la
+        recuperación correcta del archivo solicitado y marcó el
+        laboratorio como <b>Solved</b>, confirmando que el objetivo
+        de la práctica había sido completado satisfactoriamente.
+
+    </p>
+
+
+    <img
+        src="lab03/imagenes/solvedlab03.png"
+        alt="Confirmación del laboratorio resuelto en PortSwigger"
+        class="evidence-image"
+    >
+
+
+    <div class="activity-links">
+
+        <a
+            href="lab03/documentos/informe.pdf"
+            target="_blank"
+            class="activity-link"
+        >
+            Ver informe completo
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULTADOS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            04
+        </span>
+
+        <h2>
+            Resultados
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Se explotó exitosamente una vulnerabilidad de
+        <b>File Path Traversal</b> presente en el mecanismo de carga de
+        imágenes de la aplicación.
+
+        <br><br>
+
+        Mediante la modificación del parámetro <i>filename</i> con el
+        payload <i>....//....//....//etc/passwd</i>, se comprobó que
+        la eliminación no recursiva de las secuencias <i>../</i> podía
+        ser evadida utilizando secuencias de traversal anidadas.
+
+        <br><br>
+
+        El servidor respondió con <b>HTTP/2 200 OK</b> y mostró el
+        contenido del archivo <i>/etc/passwd</i>, demostrando que el
+        mecanismo de sanitización implementado era insuficiente.
+        Finalmente, PortSwigger Web Security Academy validó la explotación
+        y marcó el laboratorio como <b>Solved</b>.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+===================================================== -->
+
+<section class="section" style="margin-top: 0px;">
+
+    <div class="section-title">
+
+        <span>
+            05
+        </span>
+
+        <h2>
+            Conclusión
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        El laboratorio permitió comprender que eliminar únicamente
+        secuencias conocidas como <i>../</i> no garantiza la prevención
+        de una vulnerabilidad de <b>File Path Traversal</b> cuando el
+        proceso de filtrado se realiza de forma no recursiva.
+
+        <br><br>
+
+        Mediante Burp Suite fue posible identificar el parámetro
+        <i>filename</i>, modificar su valor y utilizar secuencias
+        anidadas como <i>....//</i> para evadir el mecanismo de
+        sanitización implementado por la aplicación.
+
+        <br><br>
+
+        La recuperación de <i>/etc/passwd</i> demostró que una validación
+        basada únicamente en eliminar patrones específicos puede resultar
+        insuficiente. Es necesario validar la ruta final que será procesada
+        por el servidor y asegurar que permanezca dentro de los directorios
+        autorizados.
+
+        <br><br>
+
+        La actividad también permitió reforzar el uso de
+        <b>HTTP History</b> y <b>Repeater</b> para analizar, modificar
+        y comprobar el comportamiento de peticiones HTTP durante
+        pruebas controladas de seguridad web.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOLVER
+===================================================== -->
+
+<section class="section" style="margin-top: 0px; padding-top: 0px;">
+
+    <a
+        href="../index.html#roadmap"
+        class="btn btn-primary"
+    >
+        ← Volver a Road To Hall Of Fame
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        Portafolio de evidencias · Seguridad Informática
+    </p>
+
+    <p class="copyright">
+        © 2026 Melanie Alondra Alba Diez. Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
