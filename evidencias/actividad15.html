@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Actividad 15 | Seguridad Informática
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../styles.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-main">
+
+        <div class="identity">
+
+            <div class="identity-name">
+
+                <h1>
+                    Melanie Alondra Alba Diez
+                </h1>
+
+                <span class="alias">
+                    @blueflare
+                </span>
+
+            </div>
+
+
+            <div class="academic-info">
+
+                <strong>
+                    CNO IV — Seguridad Informática
+                </strong>
+
+                <span>
+                    Universidad Politécnica de San Luis Potosí
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="academic-period">
+
+            <span class="period-label">
+                Periodo
+            </span>
+
+            <strong>
+                Agosto - Diciembre 2026
+            </strong>
+
+            <span>
+                Séptimo semestre
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="../index.html#inicio">
+            Inicio
+        </a>
+
+        <a href="../index.html#evidencias">
+            Evidencias
+        </a>
+
+        <a href="../index.html#roadmap">
+            Road To Hall Of Fame
+        </a>
+
+        <a href="../index.html#proyectos">
+            Proyectos
+        </a>
+
+        <a href="../index.html#certificaciones">
+            Certificaciones
+        </a>
+
+        <a href="../index.html#perfil">
+            Perfil
+        </a>
+
+        <a href="../index.html#tecnologias">
+            Tecnologías
+        </a>
+
+        <a href="../index.html#contacto">
+            Contacto
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+     ENCABEZADO DE LA EVIDENCIA
+===================================================== -->
+
+<section class="section" style="padding-top: 30px;">
+
+    <div class="section-title">
+
+        <span>
+            01
+        </span>
+
+        <h2>
+            Actividad 15
+        </h2>
+
+    </div>
+
+
+    <span class="card-tag">
+        ACTIVIDAD ACADÉMICA
+    </span>
+
+
+    <h1 style="margin-top: 15px;">
+        La fotografía como testigo: extracción de metadatos GPS
+        para geolocalización
+    </h1>
+
+
+    <p
+        class="section-intro"
+        style="margin-top: 20px;"
+    >
+
+        Análisis de metadatos de archivos digitales mediante
+        <b>ExifTool</b>, identificando información relacionada
+        con su creación, modificación, autoría y ubicación
+        geográfica.
+
+        La actividad comprende el análisis de un documento
+        de INTERPOL y una fotografía capturada con un
+        dispositivo móvil, así como la eliminación de
+        metadatos para comprender su importancia en
+        la seguridad de la información.
+
+    </p>
+
+
+    <!-- INFORMACIÓN -->
+
+    <div class="technical-info">
+
+        <div>
+
+            <span>
+                FECHA
+            </span>
+
+            <strong>
+                28 / 10 / 2026
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TIPO
+            </span>
+
+            <strong>
+                Actividad práctica
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                TECNOLOGÍAS
+            </span>
+
+            <strong>
+                ExifTool · PowerShell · Google Maps · EXIF
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OBJETIVO
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            02
+        </span>
+
+        <h2>
+            Objetivo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Identificar y analizar los <b>metadatos almacenados
+        en archivos digitales</b> mediante el uso de la
+        herramienta ExifTool, con el propósito de reconocer
+        la información que puede obtenerse de un archivo
+        sin necesidad de acceder directamente a su contenido.
+
+        <br><br>
+
+        A través del análisis de un documento de Microsoft Word
+        y una fotografía en formato JPEG, se buscó recuperar
+        información relacionada con autores, fechas,
+        características técnicas y coordenadas GPS.
+
+        <br><br>
+
+        Asimismo, se realizó un procedimiento de eliminación
+        de metadatos para comprender la importancia de
+        proteger la información que puede permanecer
+        almacenada dentro de los archivos compartidos.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     DESARROLLO
+===================================================== -->
+
+<section class="section alternate-section">
+
+    <div class="section-title">
+
+        <span>
+            03
+        </span>
+
+        <h2>
+            Desarrollo
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        La actividad se desarrolló utilizando
+        <b>ExifTool</b>, una herramienta que permite
+        consultar, modificar y eliminar metadatos
+        de diferentes formatos de archivo.
+
+        <br><br>
+
+        Desde la terminal de <b>Windows PowerShell</b>,
+        se accedió al directorio que contenía los
+        archivos proporcionados para su análisis.
+        Posteriormente, se ejecutaron los comandos
+        correspondientes para obtener la información
+        almacenada en cada uno.
+
+    </p>
+
+
+
+    <!-- ================================================
+         PARTE I
+    ================================================= -->
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Parte I. Análisis de metadatos de un documento
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        En la primera parte se analizó el archivo
+        <b>WOA database application form.docx</b>,
+        correspondiente a un documento de INTERPOL.
+
+        <br><br>
+
+        Una vez identificado el directorio donde
+        se encontraba almacenado el archivo,
+        se ejecutó el siguiente comando:
+
+        <br><br>
+
+        <b>
+            <code>
+                ..\exiftool.exe "WOA database application form.docx"
+            </code>
+        </b>
+
+        <br><br>
+
+        La herramienta devolvió los metadatos del documento,
+        permitiendo identificar información relacionada
+        con su clasificación, plantilla utilizada,
+        tiempo de edición, compañía propietaria,
+        autoría y fecha de creación.
+
+        <br><br>
+
+        Entre los datos recuperados se identificó
+        que el documento estaba clasificado como
+        <b>Unclassified</b> y que la compañía
+        propietaria registrada era
+        <b>OIPC - INTERPOL</b>.
+
+        <br><br>
+
+        También se identificó a
+        <b>Carolyn Lejeune</b> como creadora
+        y última persona que modificó el documento.
+
+    </p>
+
+
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Información recuperada del documento
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Los principales metadatos identificados
+        fueron los siguientes:
+
+        <br><br>
+
+        <b>Clasificación:</b> Unclassified.
+
+        <br><br>
+
+        <b>Plantilla utilizada:</b>
+        G03 Basic Doc SP.dotx.
+
+        <br><br>
+
+        <b>Tiempo total de edición:</b>
+        45 minutos.
+
+        <br><br>
+
+        <b>Compañía propietaria:</b>
+        OIPC - INTERPOL.
+
+        <br><br>
+
+        <b>Última modificación realizada por:</b>
+        Carolyn Lejeune.
+
+        <br><br>
+
+        <b>Fecha de creación:</b>
+        03 de mayo de 2019.
+
+        <br><br>
+
+        <b>Creadora del documento:</b>
+        Carolyn Lejeune.
+
+        <br><br>
+
+        Estos resultados permitieron comprobar
+        que los metadatos de un documento pueden
+        proporcionar información sobre su origen,
+        historial de edición y personas involucradas
+        en su elaboración.
+
+    </p>
+
+
+
+    <!-- ================================================
+         PARTE II
+    ================================================= -->
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Parte II. Análisis de metadatos de una fotografía
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        En la segunda parte se analizó el archivo
+        <b>XiaomiMiA2Lite.jpg</b>, una fotografía
+        que contenía metadatos relacionados con
+        el dispositivo utilizado para capturarla
+        y su ubicación geográfica.
+
+        <br><br>
+
+        Desde PowerShell se ejecutó el comando:
+
+        <br><br>
+
+        <b>
+            <code>
+                ..\exiftool.exe XiaomiMiA2Lite.jpg
+            </code>
+        </b>
+
+        <br><br>
+
+        ExifTool mostró información técnica de la
+        fotografía, incluyendo el modelo de la cámara,
+        configuración de captura, fecha de creación
+        y datos de geolocalización GPS.
+
+        <br><br>
+
+        Entre los principales resultados obtenidos
+        se identificaron los siguientes:
+
+        <br><br>
+
+        <b>Dispositivo:</b>
+        Xiaomi Mi A2 Lite.
+
+        <br><br>
+
+        <b>ISO:</b>
+        100.
+
+        <br><br>
+
+        <b>Longitud focal:</b>
+        3.8 mm.
+
+        <br><br>
+
+        <b>Flash:</b>
+        No utilizado.
+
+        <br><br>
+
+        <b>Fecha de captura:</b>
+        28 de mayo de 2020.
+
+    </p>
+
+
+
+    <!-- ================================================
+         GEOLOCALIZACIÓN
+    ================================================= -->
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Identificación de coordenadas GPS
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Uno de los aspectos principales de la actividad
+        consistió en identificar los datos de ubicación
+        GPS almacenados en la fotografía.
+
+        <br><br>
+
+        Durante el análisis se encontraron los
+        siguientes valores:
+
+        <br><br>
+
+        <b>GPS Latitude:</b>
+        51° 15' 12.99" N
+
+        <br><br>
+
+        <b>GPS Longitude:</b>
+        0° 32' 21.93" W
+
+        <br><br>
+
+        <b>GPS Position:</b>
+        51° 15' 12.99" N,
+        0° 32' 21.93" W
+
+        <br><br>
+
+        <b>GPS Altitude:</b>
+        96.7 metros por debajo del nivel del mar,
+        según el valor registrado en los metadatos.
+
+        <br><br>
+
+        Las coordenadas identificadas se introdujeron
+        en <b>Google Maps</b> para localizar
+        geográficamente el punto registrado.
+
+        <br><br>
+
+        El resultado permitió ubicar la fotografía
+        en una zona de <b>Guildford, Surrey,
+        Reino Unido</b>.
+
+    </p>
+
+
+    <!-- IMAGEN GPS -->
+
+    <img
+        src="actividad15/imagenes/gps.png"
+        alt="Ubicación geográfica identificada mediante coordenadas GPS en Google Maps"
+        class="evidence-image"
+    >
+
+
+    <p class="section-intro">
+
+        La consulta en Google Maps permitió visualizar
+        el punto correspondiente a las coordenadas
+        recuperadas mediante ExifTool.
+
+        <br><br>
+
+        Este procedimiento demuestra cómo los
+        metadatos de una fotografía pueden revelar
+        información sobre la ubicación registrada
+        al momento de su captura, incluso cuando
+        dicha información no es visible directamente
+        en la imagen.
+
+    </p>
+
+
+
+    <!-- ================================================
+         ELIMINACIÓN DE METADATOS
+    ================================================= -->
+
+    <div class="section-title" style="margin-bottom: 15px;">
+
+        <h3>
+            Eliminación de metadatos de la fotografía
+        </h3>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Finalmente, se realizó un procedimiento
+        para eliminar los metadatos de la fotografía
+        analizada.
+
+        <br><br>
+
+        Para ello, se utilizó el parámetro
+        <b>-all=</b> de ExifTool mediante
+        el siguiente comando:
+
+        <br><br>
+
+        <b>
+            <code>
+                ..\exiftool.exe -all= XiaomiMiA2Lite.jpg
+            </code>
+        </b>
+
+        <br><br>
+
+        Este comando permite eliminar los metadatos
+        editables compatibles con la herramienta,
+        reduciendo la información adicional
+        almacenada en el archivo.
+
+        <br><br>
+
+        Posteriormente, se ejecutó nuevamente
+        el comando de consulta:
+
+        <br><br>
+
+        <b>
+            <code>
+                ..\exiftool.exe XiaomiMiA2Lite.jpg
+            </code>
+        </b>
+
+        <br><br>
+
+        Al revisar la nueva salida de ExifTool,
+        se observó que los datos relacionados
+        con el dispositivo, la configuración
+        de captura y la ubicación GPS
+        ya no aparecían en los resultados.
+
+        <br><br>
+
+        La herramienta continuó mostrando
+        información básica sobre el archivo,
+        como su formato, tamaño y características
+        generales de codificación.
+
+        <br><br>
+
+        Con ello se comprobó la eliminación
+        de los metadatos analizados y se
+        identificó una medida útil para
+        reducir la exposición de información
+        al compartir archivos digitales.
+
+    </p>
+
+
+
+    <!-- ================================================
+         INFORME COMPLETO
+    ================================================= -->
+
+    <div class="activity-links">
+
+        <a
+            href="actividad15/documentos/informe.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="activity-link"
+        >
+            Ver informe completo
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULTADOS
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <span>
+            04
+        </span>
+
+        <h2>
+            Resultados
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        Mediante el uso de <b>ExifTool</b> fue posible
+        recuperar y analizar los metadatos de
+        dos archivos digitales de diferente formato:
+        un documento de Microsoft Word y una
+        fotografía JPEG.
+
+        <br><br>
+
+        En el análisis del documento de INTERPOL
+        se identificaron datos relacionados
+        con su clasificación, plantilla,
+        tiempo de edición, compañía propietaria,
+        fecha de creación y autoría.
+
+        <br><br>
+
+        Por otra parte, el análisis de la fotografía
+        permitió identificar el dispositivo
+        utilizado para su captura, características
+        técnicas de la cámara y coordenadas GPS.
+
+        <br><br>
+
+        A partir de estas coordenadas fue posible
+        localizar en Google Maps una ubicación
+        correspondiente a <b>Guildford, Surrey,
+        Reino Unido</b>.
+
+        <br><br>
+
+        Finalmente, se ejecutó el procedimiento
+        de eliminación de metadatos y se verificó
+        que la información previamente identificada,
+        incluyendo las coordenadas GPS,
+        dejó de aparecer en la salida de ExifTool.
+
+        <br><br>
+
+        Los resultados demostraron que los
+        metadatos pueden proporcionar información
+        relevante sobre el origen, características
+        e historial de los archivos digitales.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONCLUSIÓN
+===================================================== -->
+
+<section class="section" style="margin-top: 0px;">
+
+    <div class="section-title">
+
+        <span>
+            05
+        </span>
+
+        <h2>
+            Conclusión
+        </h2>
+
+    </div>
+
+
+    <p class="section-intro">
+
+        La actividad permitió comprender la
+        importancia de los metadatos dentro
+        del análisis de archivos digitales,
+        así como la cantidad de información
+        que puede obtenerse mediante herramientas
+        especializadas como ExifTool.
+
+        <br><br>
+
+        A través del análisis de un documento
+        de INTERPOL fue posible identificar
+        información relacionada con su creación,
+        modificación y autoría, mientras que
+        el análisis de una fotografía permitió
+        recuperar características técnicas
+        del dispositivo y datos de geolocalización.
+
+        <br><br>
+
+        La identificación de coordenadas GPS
+        resultó especialmente relevante,
+        ya que permitió observar cómo una
+        fotografía puede contener información
+        sobre una ubicación geográfica
+        sin que esta sea visible en su contenido.
+
+        <br><br>
+
+        Asimismo, el procedimiento de eliminación
+        de metadatos permitió reconocer una
+        medida para reducir la exposición
+        de información al compartir archivos.
+
+        <br><br>
+
+        En el contexto de la seguridad informática,
+        esta práctica reforzó la importancia
+        del análisis de metadatos en procesos
+        de investigación digital, así como
+        la necesidad de considerar los riesgos
+        de privacidad asociados con la
+        información almacenada en los archivos.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     VOLVER
+===================================================== -->
+
+<section
+    class="section"
+    style="margin-top: 0px; padding-top: 0px;"
+>
+
+    <a
+        href="../index.html#evidencias"
+        class="btn btn-primary"
+    >
+        ← Volver a Evidencias
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+        Portafolio de evidencias · Seguridad Informática
+    </p>
+
+    <p class="copyright">
+        © 2026 Melanie Alondra Alba Diez. Todos los derechos reservados.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
+```
